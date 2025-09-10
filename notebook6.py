@@ -318,7 +318,7 @@ btn_registrarD=tk.Button(btn_frameD,text="Registrar",command=registrarDoctores)
 btn_registrarD.grid(row=5,column=0,padx=5,pady=5)
 btn_registrarD.configure(bg="#48FF68",fg="white")
 #boton eliminar
-btn_eliminarD=tk.Button(btn_frameD,text="Eliminar")
+btn_eliminarD=tk.Button(btn_frameD,text="Eliminar", command=eliminarDoctor)
 btn_eliminarD.grid(row=5,column=1,padx=5)
 btn_eliminarD.configure(bg="#FF0014",fg="white")
 #TREEVIEW
@@ -342,4 +342,5 @@ scroll_y.grid(row=6,column=2,sticky="ns")
 #cargar datos desde el  archivo al iniciar aplicacion
 #cargar_desde_archivo_pacientes()
 cargar_desde_archivo_doctores()
+
 ventanaPrincipal.mainloop()
