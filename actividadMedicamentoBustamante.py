@@ -24,7 +24,7 @@ def formato_fecha_keyrelease(event):
 #funcion guardar archivo 
 def guardar_en_archivo():
     with open ("medicamento.txt","w",encoding="utf-8")as archivo: # la "w"es modo de paertura del archivo para guardar(write)
-        for medicamento in medicamentos:
+        for medicamento in medicamentos_data:
             archivo.write(
                 f"{medicamento['Nombre']}|"
                 f"{medicamento['Presentacion']}|"
@@ -32,7 +32,7 @@ def guardar_en_archivo():
                 f"{medicamento['Fecha']}\n"
             )
 #lista medicamentos
-medicamentos=[]
+medicamentos_data=[]
 #funcion medicamento
 def registrarMedicamentos ():
     #crear un diccionario con los datos ingresados
@@ -43,7 +43,7 @@ def registrarMedicamentos ():
         "Fecha":entry_fecha.get()
     }
     #agregar a la lista
-    medicamentos.append(medicamento)
+    medicamentos_data.append(medicamento)
     guardar_en_archivo()
     #Cargar el treeview
     cargar_treeview()
@@ -52,7 +52,7 @@ def cargar_treeview():
     for medicamento in treeview.get_children():
         treeview.delete(medicamento)
     #insertar cada medicamento
-    for i, itemm in enumerate(medicamentos):
+    for i, itemm in enumerate(medicamentos_data):
         treeview.insert(
             "","end",iid=str(i),
             values=(
@@ -67,17 +67,17 @@ def cargar_treeview():
 def cargar_desde_archivo():
     try:
         with open("medicamento.txt","r",encoding="utf-8") as archivo:
-            medicamentos.clear()
+            medicamentos_data.clear()
             for linea in archivo:
                 datos=linea.strip().split("|")
-                if len(datos)==7:
+                if len(datos)==4:
                     medicamento={
                         "Nombre":datos[0],
                         "Presentacion":datos[1],
                         "Dosis":datos[2],
                         "Fecha":datos[3]
                     }
-                    medicamentos.append(medicamento)
+                    medicamentos_data.append(medicamento)
         cargar_treeview()
     except FileNotFoundError:
         open("medicamento.txt","w",encoding="utf-8").close()
@@ -88,7 +88,7 @@ def eliminarMedicamento():
         indice=int(seleccionado[0])
         id_item1=seleccionado[0]
         if messagebox.askyesno("Eliminar Medicamento", f"¿Esta seguro de eliminar el medicamento'{treeview.item(id_item1,'values')[0]}'?"):
-            del medicamentos[indice]
+            del medicamentos_data[indice]
             guardar_en_archivo() #guardar los cambios en el archivo
             cargar_treeview()
             messagebox.showinfo("Eliminar Medicamento","Medicamento eliminado exitosamente.")
@@ -174,4 +174,5 @@ treeview.configure(yscrollcommand=scroll_y.set)
 
 # Ejecutar
 cargar_desde_archivo()
+
 ventana.mainloop()
