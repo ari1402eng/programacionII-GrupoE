@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGINA CON FORMULARIO</title>
+</head>
+<body>
+    <FORM NAME="FORMULARIO I">
+        Nombre: <input type="text" name="nombre"><br>
+        Direccion: <input type="text" name="direccion"><br>
+        Calle: <input type="text" name="calle"><br>
+        Carnet de identidad: <input type="text" name="carnet" size="5" maxlength="5" value="99999"><br>
+        Sintomas:
+        <br>
+        <input type="checkbox" name="fiebre" value="fiebre" checked>Fiebre<br>
+        <input type="checkbox" name="mareos" value="mareos">Mareos<br>
+        <input type="checkbox" name="dolor de cabeza" value="dolor">dolor de cabeza<br>
+        Género:
+        <br>
+        <input type=radio name=genero value=masculino checked>Masculino<br>
+        <input type=radio name=genero value=femenino>Femenino<br>
+        Seguro:
+        <SELECT NAME="Seguro">
+            <OPTION value="Caja Petrolera" selected>Caja Petrolera
+            <OPTION value="Caja Nacional" selected>Caja Nacional
+            <OPTION value="Caja Bancaria" selected>Caja Bancaria
+        </SELECT>
+        <br>
+        Direccion: <br>
+        <TEXTAREA name="direccion" rows="10" cols="14">
+        </TEXTAREA>
+        <br>
+        <input type=submit name=enviar>
+        <input type="reset">
+    </FORM>
+    
+</body>
+</html>
